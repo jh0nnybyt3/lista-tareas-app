@@ -1,8 +1,16 @@
-# React + Vite
+# Trabajo-Integrador-Final-React 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Desarrollo en React JS** - ***Argentina Programa 4.0***
 
-Currently, two official plugins are available:
+Aplicación web para gestionar una lista de tareas.   
+La aplicación hace uso de componentes funcionales, el hook useState para el manejo del estado, el hook useEffect para realizar efectos secundarios, y eventos para interactuar con el usuario.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Integrantes del quipo:  
+* Jhonatan Garcia [Ver otros desarrollos](https://github.com/jh0nnybyt3)  
+* Nadia Pereyra [Ver otros desarrollos](https://github.com/NaSP32)  
+* Eduardo Zurbriggen [Ver otros desarrollos](https://github.com/Eduzurbriggen14)
+
+  **NOVIEMBRE DE 2023**
+
+
+
