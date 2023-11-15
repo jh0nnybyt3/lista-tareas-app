@@ -1,10 +1,10 @@
 import "./TaskItem.css";
 
-function TaskItem() {
+function TaskItem(props) {
   return (
     <>
       <div className="item">
-        <p>Tarea 1</p>
+        <p>{props.item}</p>
         <button>Tarea Completada</button>
       </div>
     </>
