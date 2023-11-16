@@ -16,8 +16,8 @@ function TaskItem(props) {
     <>
       <div className="item">
         {/* pongo la tarea que recibo por props en la etiqueta <p> */}
-        <p>{props.item}</p>
-        <button onClick={marcarComoCompleto}>{estado.marcado ? "Tarea REALIZADA": "Tarea Pendiente"}</button>
+        <p style={{color: estado.marcado ? "rgb(207, 53, 53)": "black", textDecoration : estado.marcado ? "line-through": "none"}}>{props.item}</p>
+        <button style={{ backgroundColor: estado.marcado ? "rgb(207, 53, 53)" : "" }} onClick={marcarComoCompleto}>{estado.marcado ? "Tarea REALIZADA": "Tarea Pendiente"}</button>
       </div>
     </>
   );
