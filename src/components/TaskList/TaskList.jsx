@@ -6,11 +6,11 @@ function TaskList(props) {
     <>
       <div className="listado">
         <p className="tlistado">Listado de Tareas:</p>
-        <ul>
+        <ul className="list-group">
           { // recorro el array que obtuve desde las props y a cada valor se lo paso a TaskItem
           props.tareas.map((x) => {
             return (
-              <li>
+              <li className="list-group-item">
                 {/* item={x} envio cada tarea individual al componente TaskItem atras vez de las props */}
                 <TaskItem item={x} />
               </li>

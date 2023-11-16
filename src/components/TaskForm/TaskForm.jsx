@@ -8,20 +8,40 @@ function TaskForm() {
   const [input, setInput] = useState("");
 
   // funcion para agregar nueva tarea a la lista de tareas conservando las anteriores y vaciado del input una vez agreagada la tarea
-  const agregarTarea = () => {
+  const agregarTarea = (e) => {
+    e.preventDefault();
     const newTareas = [...tareas, input];
     setTareas(newTareas);
     setInput("");
-  }
+  };
 
   return (
     <>
       <div className="agregar-tarea">
-        {/* value={input} mostra el input y onChange={(e)=> setInput(e.target.value)} actualiza el estado del input */}
-        <input type="text" value={input} onChange={(e)=> setInput(e.target.value)}/>
-        <button onClick={ () => agregarTarea() }>Agregar Tarea</button>
+        <form className="row g-3">
+          <div className="col-auto">
+            {/* value={input} mostra el input y onChange={(e)=> setInput(e.target.value)} actualiza el estado del input */}
+            <input
+              type="text"
+              className="form-control"
+              id="tarea"
+              placeholder="Ingrese tarea"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+            />
+          </div>
+          <div className="col-auto">
+            <button
+              type="submit"
+              className="btn btn-primary mb-3"
+              onClick={(e) => agregarTarea(e)}
+            >
+              Agregar
+            </button>
+          </div>
+        </form>
       </div>
-       {/* tareas={tareas} le paso por props el array de tareas al componente TaskList */}
+      {/* tareas={tareas} le paso por props el array de tareas al componente TaskList */}
       <TaskList tareas={tareas} />
     </>
   );
