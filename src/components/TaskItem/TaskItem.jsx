@@ -1,41 +1,57 @@
 import { useState } from "react";
 import "./TaskItem.css";
 
-function TaskItem({ tarea, id, eliminarTarea }) {
+function TaskItem({
+  id,
+  nombre,
+  completada,
+  cambiarCompletada,
+  eliminarTarea,
+}) {
   const [estado, setEstado] = useState({
-    marcado: false,
+    marcado: completada,
   });
 
   const marcarComoCompleto = () => {
     setEstado({
       marcado: !estado.marcado,
     });
+    estado.marcado ? cambiarCompletada(id, true) : cambiarCompletada(id, false);
   };
 
   return (
     <>
       <div className="item">
+        {estado.marcado ? (
+            <i className="bi bi-bell-slash"></i>
+        ) : (
+            <i className="bi bi-bell"></i>
+        )}
         <p
           style={{
-            color: estado.marcado ? "rgb(207, 53, 53)" : "black",
+            color: estado.marcado ? "red" : "black",
             textDecoration: estado.marcado ? "line-through" : "none",
           }}
         >
-          {tarea}
+          {nombre}
         </p>
         <button
           type="button"
-          className={estado.marcado ? "btn btn-warning" : "btn btn-success"}
+          className="btn btn-light"
           onClick={marcarComoCompleto}
         >
-          {estado.marcado ? "Tarea ralizada" : "Tarea pendiente"}
+          {estado.marcado ? (
+            <i className="bi bi-toggle-on"></i>
+          ) : (
+            <i className="bi bi-toggle-off"></i>
+          )}
         </button>
         <button
           type="button"
-          className="btn btn-danger"
+          className="btn btn-danger ms-2"
           onClick={() => eliminarTarea(id)}
         >
-          Eliminar
+          <i className="bi bi-x-lg"></i>
         </button>
       </div>
     </>

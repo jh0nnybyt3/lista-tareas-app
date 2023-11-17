@@ -8,17 +8,19 @@ function App() {
   const [ultimaTareaAgregada, setUltimaTareaAgregada] = useState(null);
   const [tareaEliminada, setTareaEliminada] = useState("");
 
-  /*   // Efecto para cargar las tareas desde localStorage al cargar la aplicación
-      useEffect(() => {
-        const tareasGuardadas = JSON.parse(localStorage.getItem('tareas')) || [];
-        setTareas(tareasGuardadas);
-      }, []);
-    
-      // Efecto para guardar las tareas en localStorage cada vez que el estado de tareas cambia
-      useEffect(() => {
-        localStorage.setItem('tareas', JSON.stringify(tareas));
-      }, [tareas]); */
+  // Efecto para cargar las tareas desde localStorage al cargar la aplicación
+  useEffect(() => {
+    const tareasGuardadas = JSON.parse(localStorage.getItem("tareas")) || [];
+    setTareas(tareasGuardadas);
+  }, []);
 
+  // Efecto para guardar las tareas en localStorage cada vez que el estado de tareas cambia
+  useEffect(() => {
+    localStorage.setItem("tareas", JSON.stringify(tareas));
+  }, [tareas]);
+
+
+  // declaro para el uso del toast
   const toastAgregar = bootstrap.Toast.getOrCreateInstance(
     document.getElementById("toastAgregar")
   );
@@ -27,23 +29,41 @@ function App() {
     document.getElementById("toastEliminar")
   );
 
+  // se ejecuta cuando se agrega una tarea nuevo porque ultimaTareaAgregada cambia de estado
+  // muestra el toast con el mensaje de agregado correctamente
   useEffect(() => {
     if (ultimaTareaAgregada) {
       toastAgregar.show();
-      setUltimaTareaAgregada(null);
     }
   }, [ultimaTareaAgregada]);
 
-  const agregarTarea = (nuevaTarea) => {
+
+  // agrega la tarea nueva como un objeto y actualiza el estado ultimaTareaAgregada para que se muestre el mensaje
+  const agregarTarea = (nombreTarea) => {
+    const nuevaTarea = {
+      id: Date.now(),
+      nombre: nombreTarea,
+      completada: false,
+    };
     setTareas([...tareas, nuevaTarea]);
-    setUltimaTareaAgregada(nuevaTarea);
+    setUltimaTareaAgregada(nuevaTarea.nombre);
   };
 
-  const eliminarTarea = (indice) => {
-    setTareaEliminada(tareas[indice]);
-    const nuevasTareas = [...tareas];
-    nuevasTareas.splice(indice, 1);
-    setTareas(nuevasTareas);
+
+  // cambia el estado de la tarea a completada
+  const cambiarCompletada = (id, completada) => {
+    const cambioCompletada = tareas.map((tarea) =>
+      tarea.id === id ? { ...tarea, completada: completada } : tarea
+    );
+    setTareas(cambioCompletada);
+  };
+
+  // elimina una tarea y modifica al estado tareaEliminada para mostrarla en el toast
+  const eliminarTarea = (id) => {
+    const tareaAEliminada = tareas.find((tarea) => tarea.id === id);
+    const tareasRestantes = tareas.filter((tarea) => tarea.id !== id);
+    setTareas(tareasRestantes);
+    setTareaEliminada(tareaAEliminada.nombre);
     toastEliminar.show();
   };
 
@@ -52,7 +72,11 @@ function App() {
       <div className="container">
         <h1>Lista-Tareas-App</h1>
         <TaskForm agregarTarea={agregarTarea} />
-        <TaskList tareas={tareas} eliminarTarea={eliminarTarea} />
+        <TaskList
+          tareas={tareas}
+          cambiarCompletada={cambiarCompletada}
+          eliminarTarea={eliminarTarea}
+        />
         <div className="toast-container position-fixed bottom-0 end-0 p-3">
           <div
             id="toastAgregar"
@@ -71,7 +95,7 @@ function App() {
               ></button>
             </div>
             <div className="toast-body">
-              Tarea {tareas[tareas.length - 1]} agregada correctamente.
+              Tarea {ultimaTareaAgregada} agregada correctamente.
             </div>
           </div>
         </div>

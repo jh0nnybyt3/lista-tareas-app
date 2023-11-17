@@ -1,6 +1,16 @@
 .item {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   width: 400px;
+}
+
+p {
+  margin-bottom: 0;
+  margin-left: 10px;
+  width: 400px;
+}
+
+.bi-bell-slash {
+  color: red;
 }
