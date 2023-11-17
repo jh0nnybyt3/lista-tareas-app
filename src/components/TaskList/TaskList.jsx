@@ -1,18 +1,16 @@
 import "./TaskList.css";
 import TaskItem from "../TaskItem/TaskItem";
 
-function TaskList(props) {
+function TaskList({ tareas, eliminarTarea }) {
   return (
     <>
       <div className="listado">
         <p className="tlistado">Listado de Tareas:</p>
         <ul className="list-group">
-          { // recorro el array que obtuve desde las props y a cada valor se lo paso a TaskItem
-          props.tareas.map((x) => {
+          {tareas.map((tarea, id) => {
             return (
-              <li className="list-group-item">
-                {/* item={x} envio cada tarea individual al componente TaskItem atras vez de las props */}
-                <TaskItem item={x} />
+              <li className="list-group-item" key={id}>
+                <TaskItem tarea={tarea} id={id} eliminarTarea={eliminarTarea} />
               </li>
             );
           })}
