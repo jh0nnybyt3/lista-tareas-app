@@ -62,9 +62,12 @@ function App() {
   const eliminarTarea = (id) => {
     const tareaAEliminada = tareas.find((tarea) => tarea.id === id);
     const tareasRestantes = tareas.filter((tarea) => tarea.id !== id);
-    setTareas(tareasRestantes);
-    setTareaEliminada(tareaAEliminada.nombre);
-    toastEliminar.show();
+    const confirmar = confirm("Deseas eliminar la tarea??")
+    if (confirmar) {
+      setTareas(tareasRestantes);
+      setTareaEliminada(tareaAEliminada.nombre);
+      toastEliminar.show();
+    }
   };
 
   return (
