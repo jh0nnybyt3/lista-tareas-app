@@ -19,7 +19,6 @@ function App() {
     localStorage.setItem("tareas", JSON.stringify(tareas));
   }, [tareas]);
 
-
   // declaro para el uso del toast
   const toastAgregar = bootstrap.Toast.getOrCreateInstance(
     document.getElementById("toastAgregar")
@@ -37,7 +36,6 @@ function App() {
     }
   }, [ultimaTareaAgregada]);
 
-
   // agrega la tarea nueva como un objeto y actualiza el estado ultimaTareaAgregada para que se muestre el mensaje
   const agregarTarea = (nombreTarea) => {
     const nuevaTarea = {
@@ -49,20 +47,20 @@ function App() {
     setUltimaTareaAgregada(nuevaTarea.nombre);
   };
 
-
   // cambia el estado de la tarea a completada
   const cambiarCompletada = (id, completada) => {
     const cambioCompletada = tareas.map((tarea) =>
-      tarea.id === id ? { ...tarea, completada: completada } : tarea
+      tarea.id === id ? { ...tarea, completada: !completada } : tarea
     );
     setTareas(cambioCompletada);
+    localStorage.setItem("tareas", JSON.stringify(tareas));
   };
 
   // elimina una tarea y modifica al estado tareaEliminada para mostrarla en el toast
   const eliminarTarea = (id) => {
     const tareaAEliminada = tareas.find((tarea) => tarea.id === id);
     const tareasRestantes = tareas.filter((tarea) => tarea.id !== id);
-    const confirmar = confirm("Deseas eliminar la tarea??")
+    const confirmar = confirm("Deseas eliminar la tarea?");
     if (confirmar) {
       setTareas(tareasRestantes);
       setTareaEliminada(tareaAEliminada.nombre);

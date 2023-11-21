@@ -9,6 +9,8 @@ function TaskForm({ agregarTarea }) {
     if (input.trim() !== "") {
       agregarTarea(input);
       setInput("");
+    } else {
+      alert("El campo no puede quedar vacio!");
     }
   };
 
