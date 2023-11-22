@@ -6,7 +6,7 @@ function TaskItem({
   nombre,
   completada,
   cambiarCompletada,
-  eliminarTarea,
+  eliminarModal
 }) {
   const [estado, setEstado] = useState({
     marcado: completada,
@@ -49,7 +49,7 @@ function TaskItem({
         <button
           type="button"
           className="btn btn-danger ms-2"
-          onClick={() => eliminarTarea(id)}
+          onClick={() => eliminarModal(id)}
         >
           <i className="bi bi-x-lg"></i>
         </button>

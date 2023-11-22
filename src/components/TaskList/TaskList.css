@@ -1,0 +1,18 @@
+.listado {
+     width: 100%;
+}
+
+ul {
+    gap: 10px;
+}
+
+.tlistado{
+    font-size: 20px;
+    color: yellow;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+p{
+    text-align: left;
+}

@@ -2,7 +2,7 @@ import "./TaskList.css";
 import TaskItem from "../TaskItem/TaskItem";
 import { useEffect } from "react";
 
-function TaskList({ tareas, cambiarCompletada, eliminarTarea }) {
+function TaskList({ tareas, cambiarCompletada, eliminarModal }) {
   return (
     <>
       <div className="listado">
@@ -16,7 +16,7 @@ function TaskList({ tareas, cambiarCompletada, eliminarTarea }) {
                   id={tarea.id}
                   completada={tarea.completada}
                   cambiarCompletada={cambiarCompletada}
-                  eliminarTarea={eliminarTarea}
+                  eliminarModal={eliminarModal}
                 />
               </li>
             );

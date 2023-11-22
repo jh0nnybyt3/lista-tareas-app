@@ -1,14 +1,13 @@
 .item {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
-  width: 400px;
+  width: 100%;
 }
 
 p {
   margin-bottom: 0;
   margin-left: 10px;
-  width: 400px;
+  width: 100%;
 }
 
 .bi-bell-slash {

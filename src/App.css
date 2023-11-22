@@ -2,9 +2,14 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  padding-top: 30px;
-  width: 500px;
+  padding-top: 20px;
+  height: 100vh;
   text-align: center;
-  justify-content: center;
   align-items: center;
+  background-color: rgb(165, 93, 233);
+}
+
+.bi-info-circle{
+  color: black;
+  font-size: 20px;
 }

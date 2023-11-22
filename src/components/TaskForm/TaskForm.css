@@ -1,8 +1,12 @@
 .agregar-tarea {
   display: flex;
-  width: 450px;
+  width: 100%;
   margin-top: 15px;
-  align-items: center;
   justify-content: center;
   gap: 20px;
+}
+
+form {
+  width: 100%;
+  justify-content: center;
 }
